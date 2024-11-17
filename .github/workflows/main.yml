@@ -21,7 +21,4 @@ jobs:
         with:
           start_time: "${{ github.event.inputs.start_time }}"
           end_time: "${{ github.event.inputs.end_time }}"
-      - name: Dummy Next Step
-        if: success() # Proceed only if Time Check Step succeeds
-        run: |
-          echo "Proceeding to the next action because the time check passed!"
+

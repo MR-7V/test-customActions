@@ -1,9 +1,17 @@
-name: "Age Check Action"
-description: "Checks if the user's age is above 18 and proceeds only if eligible."
+name: "Maintenance Window Validator"
+description: "A custom GitHub Action to verify if the current time falls within a specified maintenance window."
 inputs:
-  age:
-    description: "The age of the user."
+  start_time:
+    description: "Start time of the maintenance window (in 24-hour format)."
     required: true
+    default: "0"
+  end_time:
+    description: "End time of the maintenance window (in 24-hour format)."
+    required: true
+    default: "6"
+outputs:
+  is_within_time_range:
+    description: "Indicates whether the current time falls within the maintenance window (true/false)."
 runs:
   using: "node16"
   main: "index.js"

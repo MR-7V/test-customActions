@@ -15,18 +15,25 @@ try {
   }
 
   // Get the current EST time
-  const currentTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+  const currentTime = new Date().toLocaleString("en-US", { timeZone: "America/Toronto" });
   const currentHour = new Date(currentTime).getHours();
 
   console.log(`Current EST time: ${currentTime}`);
-  console.log(`Current EST hour: ${currentHour}`);
-  console.log(`User-defined time range: ${startTime} to ${endTime}`);
+  console.log(`Maintenance Window : ${startTime} to ${endTime}`);
 
   // Check if the current time is within the user-defined range
   if (currentHour >= startTime && currentHour < endTime) {
-    console.log("Current time is within the specified range. Proceeding to the next job.");
+    console.log("***********************");
+    console.log("*** MAINTENANCE ***");
+    console.log("*** Within the maintenance - PROCEEDING TO DEPLOYMENT ***");
+    console.log("***********************");
+    core.setOutput("is_within_time_range", "true");
   } else {
-    console.log("Current time is NOT within the specified range. Stopping the workflow.");
+    console.log("***********************");
+    console.log("*** ALERT ***");
+    console.log("*** Current time is out of maintenance window. STOPPING DEPLOYMENT. ***");
+    console.log("***********************");
+    core.setOutput("is_within_time_range", "false");
     process.exit(1); // Exit with a non-zero code
   }
 } catch (error) {
