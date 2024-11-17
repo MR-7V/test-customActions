@@ -1,3 +1,5 @@
+const core = require("@actions/core");
+
 try {
   // Get the 'age' input
   const ageInput = core.getInput("age");
