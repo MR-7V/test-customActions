@@ -21,12 +21,7 @@ try {
     const currentHour = new Date(currentTime).getHours();
 
     console.log(`Current EST time: ${currentTime}`);
-    console.log("*******************************");
-    console.log("***   MAINTENANCE WINDOW    ***");
-    console.log(`***   Start Time: ${startTime}:00:00   ***`);
-    console.log(`***   End Time  : ${endTime}:00:00   ***`);
-    console.log("*******************************");
-
+    console.log(`Maintenance Window : ${startTime}:00:00 to ${endTime}:00:00`);
 
     // Check if the current time is within the user-defined range
     if (currentHour >= startTime && currentHour < endTime) {
