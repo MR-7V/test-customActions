@@ -16,3 +16,11 @@ jobs:
         uses: mr-7v/test-customActions@main
         with:
           age: "${{ github.event.inputs.age }}"
+      - name: Dummy Next Step
+        if: success() # This ensures the step runs only if the previous step is successful
+        run: |
+          echo "Proceeding to the next action because the age check passed!"
+          echo "This is a placeholder for the next job in the pipeline."
+      
+      
+

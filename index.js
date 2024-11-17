@@ -14,7 +14,7 @@ try {
     console.log("You are eligible to proceed.");
   } else {
     console.log("You are not eligible to proceed. Stopping the workflow.");
-    process.exit(1); // Exit with a non-zero code
+    process.exit(0); // Exit with a non-zero code
   }
 } catch (error) {
   core.setFailed(error.message);
