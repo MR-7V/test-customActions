@@ -1,26 +1,27 @@
-name: Age Check Workflow
+name: Time Check Workflow
 
 on:
   workflow_dispatch:
     inputs:
-      age:
-        description: "Enter your age"
+      start_time:
+        description: "Enter the start time (24-hour format, e.g., 0 for 12 AM)"
         required: true
-        default: "18"
+        default: "0"
+      end_time:
+        description: "Enter the end time (24-hour format, e.g., 6 for 6 AM)"
+        required: true
+        default: "6"
 
 jobs:
-  age-check:
+  time-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Age Check Step
-        uses: mr-7v/test-customActions@main
+      - name: Time Check Step
+        uses: <your-username>/time-check-action@main
         with:
-          age: "${{ github.event.inputs.age }}"
+          start_time: "${{ github.event.inputs.start_time }}"
+          end_time: "${{ github.event.inputs.end_time }}"
       - name: Dummy Next Step
-        if: success() # This ensures the step runs only if the previous step is successful
+        if: success() # Proceed only if Time Check Step succeeds
         run: |
-          echo "Proceeding to the next action because the age check passed!"
-          echo "This is a placeholder for the next job in the pipeline."
-      
-      
-
+          echo "Proceeding to the next action because the time check passed!"

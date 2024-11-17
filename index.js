@@ -1,19 +1,32 @@
 const core = require("@actions/core");
 
 try {
-  // Get the 'age' input
-  const ageInput = core.getInput("age");
-  const age = parseInt(ageInput, 10);
+  // Get the inputs
+  const startTimeInput = core.getInput("start_time");
+  const endTimeInput = core.getInput("end_time");
 
-  if (isNaN(age)) {
-    core.setFailed("Invalid age input. Please provide a valid number.");
+  // Parse the inputs
+  const startTime = parseInt(startTimeInput, 10);
+  const endTime = parseInt(endTimeInput, 10);
+
+  if (isNaN(startTime) || isNaN(endTime)) {
+    core.setFailed("Invalid inputs. Start time and end time must be valid numbers.");
     return;
   }
 
-  if (age >= 18) {
-    console.log("You are eligible to proceed.");
+  // Get the current EST time
+  const currentTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+  const currentHour = new Date(currentTime).getHours();
+
+  console.log(`Current EST time: ${currentTime}`);
+  console.log(`Current EST hour: ${currentHour}`);
+  console.log(`User-defined time range: ${startTime} to ${endTime}`);
+
+  // Check if the current time is within the user-defined range
+  if (currentHour >= startTime && currentHour < endTime) {
+    console.log("Current time is within the specified range. Proceeding to the next job.");
   } else {
-    console.log("You are not eligible to proceed. Stopping the workflow.");
+    console.log("Current time is NOT within the specified range. Stopping the workflow.");
     process.exit(1); // Exit with a non-zero code
   }
 } catch (error) {
