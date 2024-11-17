@@ -25,13 +25,13 @@ try {
   if (currentHour >= startTime && currentHour < endTime) {
     console.log("***********************");
     console.log("*** MAINTENANCE ***");
-    console.log("*** Within the maintenance - PROCEEDING TO DEPLOYMENT ***");
+    console.log("*** Within the maintenance window - PROCEEDING TO DEPLOYMENT ***");
     console.log("***********************");
     core.setOutput("is_within_time_range", "true");
   } else {
     console.log("***********************");
     console.log("*** ALERT ***");
-    console.log("*** Current time is out of maintenance window. STOPPING DEPLOYMENT. ***");
+    console.log("*** Current time is out of maintenance window - STOPPING DEPLOYMENT. ***");
     console.log("***********************");
     core.setOutput("is_within_time_range", "false");
     process.exit(1); // Exit with a non-zero code
