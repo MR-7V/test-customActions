@@ -13,5 +13,5 @@ outputs:
   is_within_time_range:
     description: "Indicates whether the current time falls within the maintenance window (true/false)."
 runs:
-  using: "node16"
-  main: "index.js"
+  using: "node20"
+  main: "./dist/index.js"

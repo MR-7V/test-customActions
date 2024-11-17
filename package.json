@@ -1,14 +1,17 @@
 {
-  "name": "quotecustomactions",
+  "name": "maintainanceWindowValidator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "ncc build index.js -o dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
   }
 }
