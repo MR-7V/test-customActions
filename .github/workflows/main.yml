@@ -16,7 +16,7 @@ jobs:
   Maintenance_Window_Validation:
     runs-on: ubuntu-latest
     steps:
-      - name: Time Check Step
+      - name: Validate
         uses: mr-7v/test-customActions@main
         with:
           start_time: "${{ github.event.inputs.start_time }}"
