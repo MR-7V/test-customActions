@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Time Check Step
-        uses: <your-username>/time-check-action@main
+        uses: mr-7v/test-customActions@main
         with:
           start_time: "${{ github.event.inputs.start_time }}"
           end_time: "${{ github.event.inputs.end_time }}"
