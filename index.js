@@ -23,7 +23,16 @@ const readme_path = core.getInput('readme_path') || 'README.md';
 
     await fs.writeFile('./README.md', newText);
 
+    // Check age and exit with appropriate code
+    if (qotd < 50) {
+      console.log("Age is below 50");
+      process.exit(1); // Exit with code 1
+    } else {
+      console.log("Age is 50 or above");
+      process.exit(0); // Exit with code 0
+    }
   } catch (error) {
-    console.log(error.message);
+    console.error("Error occurred:", error.message);
+    process.exit(1); // Exit with error code in case of an exception
   }
 })();

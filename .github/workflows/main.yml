@@ -19,11 +19,5 @@ jobs:
     - name: Run QOTD action
       uses: ./ # Uses an action in the root directory
       with:
-         category: 'life'
-    - name: Commit and push update
-      run: |-
-        git config --global user.email "mohithreddy.venkata@gmail.com"
-        git config --global user.name "mr-7v"
-        git add -A
-        git commit -m "Added QOTD from GitHub Actions"
-        git push
+         category: 'Mohith'
+
