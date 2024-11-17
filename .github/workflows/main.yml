@@ -1,23 +1,18 @@
-name: Update README with QOTD
+name: Age Check Workflow
+
 on:
-  workflow_dispatch: # triggers manually
-  schedule:
-  - cron: "0 0 * * *" # triggers every midnight
+  workflow_dispatch:
+    inputs:
+      age:
+        description: "Enter your age"
+        required: true
+        default: "18"
 
 jobs:
-  build:
+  age-check:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repo
-      uses: actions/checkout@v2
-    - name: Use Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-    - name: Install node dependencies
-      run: npm install
-    - name: Run QOTD action
-      uses: ./ # Uses an action in the root directory
-      with:
-         category: 'Mohith'
-
+      - name: Age Check Step
+        uses: mr-7v/test-customActions@main
+        with:
+          age: "${{ github.event.inputs.age }}"
